@@ -1,0 +1,456 @@
+{
+  "sources": {
+    "coingecko": {
+      "type": "api",
+      "base_url": "https://api.coingecko.com/api/v3",
+      "free_tier": {
+        "rate_limit": "100 calls/min",
+        "monthly_limit": 10000,
+        "auth": "none"
+      },
+      "paid_tiers": [
+        {
+          "name": "Analyst",
+          "price": 35,
+          "calls": 500000
+        },
+        {
+          "name": "Lite",
+          "price": 129,
+          "calls": 2000000
+        },
+        {
+          "name": "Pro",
+          "price": 499,
+          "calls": 5000000
+        }
+      ],
+      "endpoints": {
+        "coins_list": "/coins/list",
+        "coins_markets": "/coins/markets",
+        "coin_data": "/coins/{id}",
+        "coin_history": "/coins/{id}/history",
+        "coin_market_chart": "/coins/{id}/market_chart",
+        "asset_platforms": "/asset_platforms",
+        "categories": "/coins/categories",
+        "exchanges": "/exchanges",
+        "derivatives": "/derivatives/exchanges",
+        "nfts": "/nfts/list",
+        "search": "/search",
+        "trending": "/search/trending",
+        "global": "/global",
+        "companies": "/companies/public_treasury/{coin_id}"
+      },
+      "data_types": [
+        "prices",
+        "market_cap",
+        "volume",
+        "price_change",
+        "historical_data",
+        "exchange_data",
+        "derivatives",
+        "nft_floor_prices",
+        "developer_activity",
+        "social_metrics",
+        "categories",
+        "global_metrics",
+        "treasury_holdings"
+      ],
+      "priority": "high",
+      "reliability": "excellent"
+    },
+    "defillama": {
+      "type": "api",
+      "base_url": "https://api.llama.fi",
+      "free_tier": {
+        "rate_limit": "no limit (open)",
+        "monthly_limit": "unlimited",
+        "auth": "none"
+      },
+      "paid_tiers": [
+        {
+          "name": "Pro API",
+          "price": 300,
+          "calls": 1000000,
+          "rate_limit": "1000/min"
+        }
+      ],
+      "endpoints": {
+        "protocols": "/protocols",
+        "protocol": "/protocol/{protocol}",
+        "tvl": "/tvl/{protocol}",
+        "chains": "/chains",
+        "chart": "/charts",
+        "protocols_by_chain": "/protocols/{chain}",
+        "yields": "/yields",
+        "stablecoins": "/stablecoins",
+        "fees": "/overview/fees",
+        "revenue": "/overview/revenue"
+      },
+      "data_types": [
+        "tvl",
+        "protocol_metrics",
+        "chain_metrics",
+        "yields",
+        "stablecoin_data",
+        "fees",
+        "revenue",
+        "historical_tvl"
+      ],
+      "priority": "high",
+      "reliability": "excellent"
+    },
+    "alternative_me": {
+      "type": "api",
+      "base_url": "https://api.alternative.me",
+      "free_tier": {
+        "rate_limit": "no limit",
+        "monthly_limit": "unlimited",
+        "auth": "none"
+      },
+      "endpoints": {
+        "fng": "/fng/",
+        "fng_historical": "/fng/?limit={limit}"
+      },
+      "data_types": [
+        "fear_greed_index",
+        "sentiment"
+      ],
+      "priority": "medium",
+      "reliability": "good"
+    },
+    "nansen": {
+      "type": "api",
+      "base_url": "https://api.nansen.ai",
+      "free_tier": {
+        "rate_limit": "test only",
+        "monthly_limit": 1000,
+        "auth": "api_key",
+        "note": "10x consumption for test credits"
+      },
+      "paid_tiers": [
+        {
+          "name": "API Plan",
+          "price": "49-69/mo + credits",
+          "rate": "$0.001/call"
+        }
+      ],
+      "endpoints": {
+        "wallet_profiler": "/v2/wallets/{address}/profile",
+        "token_screener": "/v2/tokens/screener",
+        "smart_money": "/v2/smart-money/flows",
+        "defi_holdings": "/v2/wallets/{address}/defi",
+        "transactions": "/v2/wallets/{address}/transactions"
+      },
+      "data_types": [
+        "wallet_profiles",
+        "smart_money_tracking",
+        "token_screener",
+        "defi_holdings",
+        "labeled_addresses",
+        "transaction_history"
+      ],
+      "priority": "medium",
+      "reliability": "good"
+    },
+    "github": {
+      "type": "api",
+      "base_url": "https://api.github.com",
+      "free_tier": {
+        "rate_limit": "60/hour (unauth)",
+        "monthly_limit": "5000/hour (auth)",
+        "auth": "token"
+      },
+      "endpoints": {
+        "repo": "/repos/{owner}/{repo}",
+        "commits": "/repos/{owner}/{repo}/commits",
+        "contributors": "/repos/{owner}/{repo}/contributors",
+        "activity": "/repos/{owner}/{repo}/activity",
+        "languages": "/repos/{owner}/{repo}/languages",
+        "releases": "/repos/{owner}/{repo}/releases"
+      },
+      "data_types": [
+        "commits",
+        "contributors",
+        "stars",
+        "forks",
+        "activity",
+        "languages",
+        "releases"
+      ],
+      "priority": "medium",
+      "reliability": "excellent"
+    },
+    "coinglass": {
+      "type": "parsing",
+      "base_url": "https://www.coinglass.com",
+      "protection": "Cloudflare + anti-bot",
+      "data_types": [
+        "futures_open_interest",
+        "funding_rates",
+        "liquidations",
+        "long_short_ratio",
+        "etf_flows",
+        "options_data",
+        "exchange_inflows_outflows",
+        "miner_data"
+      ],
+      "parsing_difficulty": "hard",
+      "tools_needed": [
+        "playwright",
+        "stealth",
+        "proxies"
+      ],
+      "priority": "high",
+      "reliability": "medium"
+    },
+    "coinmarketcal": {
+      "type": "parsing",
+      "base_url": "https://coinmarketcal.com",
+      "protection": "basic",
+      "data_types": [
+        "event_calendar",
+        "listings",
+        "updates",
+        "hard_forks",
+        "partnerships",
+        "token_sales",
+        "community_votes",
+        "trending_events"
+      ],
+      "parsing_difficulty": "easy",
+      "tools_needed": [
+        "requests",
+        "beautifulsoup"
+      ],
+      "priority": "medium",
+      "reliability": "medium"
+    },
+    "token_unlocks": {
+      "type": "parsing",
+      "base_url": "https://token.unlocks.app",
+      "protection": "Cloudflare",
+      "data_types": [
+        "unlock_schedules",
+        "vesting_data",
+        "allocation_breakdown",
+        "upcoming_unlocks",
+        "unlock_volume",
+        "investor_distribution"
+      ],
+      "parsing_difficulty": "medium",
+      "tools_needed": [
+        "playwright",
+        "proxies"
+      ],
+      "priority": "high",
+      "reliability": "medium"
+    },
+    "tweetscout": {
+      "type": "parsing",
+      "base_url": "https://tweetscout.io",
+      "protection": "auth required",
+      "data_types": [
+        "twitter_engagement",
+        "community_growth",
+        "influencer_activity",
+        "sentiment_analysis",
+        "trending_hashtags",
+        "project_mentions"
+      ],
+      "parsing_difficulty": "hard",
+      "tools_needed": [
+        "playwright",
+        "auth_session",
+        "proxies"
+      ],
+      "priority": "low",
+      "reliability": "low"
+    },
+    "openorgs": {
+      "type": "parsing",
+      "base_url": "https://openorgs.info",
+      "protection": "basic",
+      "data_types": [
+        "treasury_data",
+        "governance_proposals",
+        "multisig_wallets",
+        "dao_expenses",
+        "organizational_structure"
+      ],
+      "parsing_difficulty": "easy",
+      "tools_needed": [
+        "requests",
+        "beautifulsoup"
+      ],
+      "priority": "low",
+      "reliability": "medium"
+    },
+    "cryptomiso": {
+      "type": "parsing",
+      "base_url": "https://www.cryptomiso.com",
+      "protection": "basic",
+      "data_types": [
+        "github_commits_ranking",
+        "developer_activity",
+        "project_comparison",
+        "commit_history"
+      ],
+      "parsing_difficulty": "easy",
+      "tools_needed": [
+        "requests",
+        "beautifulsoup"
+      ],
+      "priority": "low",
+      "reliability": "medium",
+      "alternative": "github_api"
+    },
+    "cryptorank": {
+      "type": "parsing",
+      "base_url": "https://cryptorank.io",
+      "protection": "Cloudflare",
+      "data_types": [
+        "ico_ico_listings",
+        "fundraising_rounds",
+        "venture_investments",
+        "exchange_ratings",
+        "market_data",
+        "project_profiles"
+      ],
+      "parsing_difficulty": "medium",
+      "tools_needed": [
+        "playwright",
+        "proxies"
+      ],
+      "priority": "medium",
+      "reliability": "medium"
+    },
+    "intotheblock": {
+      "type": "parsing",
+      "base_url": "https://www.intotheblock.com",
+      "protection": "Cloudflare + auth",
+      "data_types": [
+        "large_transactions",
+        "holder_concentration",
+        "in_out_money",
+        "holding_time",
+        "correlations",
+        "predictive_indicators",
+        "defi_metrics",
+        "derivatives_data"
+      ],
+      "parsing_difficulty": "hard",
+      "tools_needed": [
+        "playwright",
+        "stealth",
+        "proxies",
+        "auth"
+      ],
+      "priority": "medium",
+      "reliability": "low"
+    },
+    "arkham": {
+      "type": "parsing",
+      "base_url": "https://platform.arkhamintelligence.com",
+      "protection": "Cloudflare + auth + rate limit",
+      "data_types": [
+        "entity_labels",
+        "wallet_tracking",
+        "transaction_visualization",
+        "intel_exchange",
+        "whale_alerts",
+        "exchange_flows"
+      ],
+      "parsing_difficulty": "very_hard",
+      "tools_needed": [
+        "playwright",
+        "stealth",
+        "residential_proxies",
+        "auth"
+      ],
+      "priority": "medium",
+      "reliability": "low"
+    },
+    "kyberswap": {
+      "type": "parsing",
+      "base_url": "https://kyberswap.com/discover",
+      "protection": "basic JS",
+      "data_types": [
+        "trending_tokens",
+        "trending_soon",
+        "dex_metrics",
+        "liquidity_data",
+        "price_data",
+        "new_listings"
+      ],
+      "parsing_difficulty": "medium",
+      "tools_needed": [
+        "playwright"
+      ],
+      "priority": "medium",
+      "reliability": "medium"
+    },
+    "cypherhunter": {
+      "type": "parsing",
+      "base_url": "https://www.cypherhunter.com",
+      "protection": "basic",
+      "data_types": [
+        "project_profiles",
+        "investor_profiles",
+        "people_profiles",
+        "funding_connections",
+        "event_listings"
+      ],
+      "parsing_difficulty": "easy",
+      "tools_needed": [
+        "requests",
+        "beautifulsoup"
+      ],
+      "priority": "low",
+      "reliability": "medium"
+    },
+    "tokenterminal": {
+      "type": "parsing",
+      "base_url": "https://tokenterminal.com",
+      "protection": "Cloudflare + auth",
+      "data_types": [
+        "revenue",
+        "fees",
+        "active_users",
+        "token_incentives",
+        "market_cap_tvl",
+        "ps_ratio",
+        "fundamental_metrics"
+      ],
+      "parsing_difficulty": "hard",
+      "tools_needed": [
+        "playwright",
+        "stealth",
+        "proxies",
+        "auth"
+      ],
+      "priority": "medium",
+      "reliability": "low"
+    },
+    "dune": {
+      "type": "parsing",
+      "base_url": "https://dune.com",
+      "protection": "Cloudflare + auth",
+      "data_types": [
+        "public_dashboards",
+        "query_results",
+        "protocol_metrics",
+        "custom_analytics"
+      ],
+      "parsing_difficulty": "hard",
+      "tools_needed": [
+        "playwright",
+        "auth",
+        "proxies"
+      ],
+      "priority": "low",
+      "reliability": "low",
+      "note": "Лучше использовать Dune API (платно) или embed public dashboards"
+    }
+  }
+}
